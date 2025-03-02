@@ -1,0 +1,84 @@
+{
+  "rules": [
+    {
+      "name": "TypeScript Import Suggestions",
+      "pattern": "import\\s+{\\s*([^}]*)\\s*}\\s+from\\s+['\"]([^'\"]*)['\"]",
+      "message": "Consider organizing imports alphabetically for better readability.",
+      "severity": "info"
+    },
+    {
+      "name": "Zod Schema Naming Convention",
+      "pattern": "const\\s+([a-zA-Z0-9]+)\\s*=\\s*z\\.",
+      "message": "Zod schemas should follow the naming convention of ending with 'Schema' (e.g., userSchema).",
+      "severity": "warning"
+    },
+    {
+      "name": "React Query Key Convention",
+      "pattern": "queryKey:\\s*\\[([^\\]]*)\\]",
+      "message": "Ensure query keys are descriptive and hierarchical for better caching.",
+      "severity": "info"
+    },
+    {
+      "name": "Missing Type Annotations",
+      "pattern": "function\\s+([a-zA-Z0-9]+)\\s*\\(([^)]*)\\)\\s*{",
+      "not_pattern": "function\\s+([a-zA-Z0-9]+)\\s*\\(([^)]*)\\)\\s*:\\s*[a-zA-Z0-9<>\\[\\]|&]+\\s*{",
+      "message": "Add return type annotations to functions for better type safety.",
+      "severity": "warning"
+    },
+    {
+      "name": "Supabase Client Usage",
+      "pattern": "supabase\\.",
+      "message": "Consider using typed Supabase queries with proper error handling.",
+      "severity": "info"
+    },
+    {
+      "name": "Environment Variable Access",
+      "pattern": "env\\.",
+      "message": "Ensure environment variables are properly validated and have fallbacks.",
+      "severity": "warning"
+    },
+    {
+      "name": "Design System Component Usage",
+      "pattern": "<([A-Z][a-zA-Z0-9]*)",
+      "message": "Prefer using design system components for consistent UI.",
+      "severity": "info"
+    },
+    {
+      "name": "API Key Security",
+      "pattern": "apiKey|API_KEY|api_key",
+      "message": "Ensure API keys are not hardcoded and are properly secured.",
+      "severity": "error"
+    },
+    {
+      "name": "Commented Code",
+      "pattern": "// LogJson\\(",
+      "message": "Remove commented debug code before committing.",
+      "severity": "warning"
+    },
+    {
+      "name": "React Query Hook Naming",
+      "pattern": "function\\s+use([A-Z][a-zA-Z0-9]*)",
+      "message": "React Query hooks should follow the 'use' prefix convention.",
+      "severity": "info"
+    }
+  ],
+  "settings": {
+    "typescript": {
+      "preferConstOverLet": true,
+      "preferArrowFunctions": true,
+      "preferOptionalChaining": true,
+      "preferNullishCoalescing": true
+    },
+    "react": {
+      "preferFunctionalComponents": true,
+      "preferHooks": true
+    },
+    "styling": {
+      "preferDesignSystem": true
+    },
+    "api": {
+      "preferTypedResponses": true,
+      "preferErrorHandling": true
+    }
+  }
+}
