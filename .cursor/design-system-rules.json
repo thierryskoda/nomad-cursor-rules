@@ -1,0 +1,65 @@
+{
+  "rules": [
+    {
+      "name": "Design System Component Usage",
+      "pattern": "<div\\s+className=['\"]([^'\"]*)['\"]",
+      "message": "Consider using design system components instead of raw HTML elements with custom classes.",
+      "severity": "info"
+    },
+    {
+      "name": "Inline Styles",
+      "pattern": "style=\\{\\{([^}]*)\\}\\}",
+      "message": "Avoid inline styles. Use design system components or styled components instead.",
+      "severity": "warning"
+    },
+    {
+      "name": "Hard-coded Colors",
+      "pattern": "color:\\s*['\"]#([0-9a-fA-F]{3,6})['\"]|backgroundColor:\\s*['\"]#([0-9a-fA-F]{3,6})['\"]",
+      "message": "Use design system color tokens instead of hard-coded hex values.",
+      "severity": "warning"
+    },
+    {
+      "name": "Hard-coded Font Sizes",
+      "pattern": "fontSize:\\s*['\"]([0-9]+)px['\"]",
+      "message": "Use design system typography tokens instead of hard-coded font sizes.",
+      "severity": "warning"
+    },
+    {
+      "name": "Hard-coded Spacing",
+      "pattern": "margin:\\s*['\"]([0-9]+)px['\"]|padding:\\s*['\"]([0-9]+)px['\"]",
+      "message": "Use design system spacing tokens instead of hard-coded pixel values.",
+      "severity": "warning"
+    },
+    {
+      "name": "Responsive Design",
+      "pattern": "@media\\s*\\(max-width:",
+      "message": "Use design system breakpoint utilities for consistent responsive behavior.",
+      "severity": "info"
+    },
+    {
+      "name": "Accessibility - Missing ARIA",
+      "pattern": "<button\\s+(?!.*aria-)",
+      "message": "Ensure interactive elements have appropriate ARIA attributes for accessibility.",
+      "severity": "warning"
+    },
+    {
+      "name": "Accessibility - Image Alt Text",
+      "pattern": "<img\\s+(?!.*alt=)",
+      "message": "Images should have descriptive alt text for accessibility.",
+      "severity": "error"
+    },
+    {
+      "name": "Component Props Spreading",
+      "pattern": "<([A-Z][a-zA-Z0-9]*)\\s+\\{\\.\\.\\.(props|rest)\\}",
+      "message": "Be cautious when spreading props. Consider explicitly listing props for better maintainability.",
+      "severity": "info"
+    },
+    {
+      "name": "Design Token Usage",
+      "pattern": "import\\s+\\{\\s*([^}]*)\\s*\\}\\s+from\\s+['\"]([^'\"]*tokens)['\"]",
+      "message": "Good practice: Using design tokens for consistent styling.",
+      "severity": "info",
+      "type": "positive"
+    }
+  ]
+}
