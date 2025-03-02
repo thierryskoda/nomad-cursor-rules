@@ -1,0 +1,50 @@
+{
+  "rules": [
+    {
+      "name": "Supabase Query Type Safety",
+      "pattern": "supabase\\.from\\(['\"]([^'\"]+)['\"]\\)\\.select\\(['\"]([^'\"]+)['\"]\\)",
+      "not_pattern": "supabase\\.from<[^>]+>\\(['\"]([^'\"]+)['\"]\\)\\.select\\(['\"]([^'\"]+)['\"]\\)",
+      "message": "Use typed Supabase queries with generics for better type safety.",
+      "severity": "warning",
+      "fix": {
+        "find": "supabase.from('$1').select('$2')",
+        "replace": "supabase.from<Database['public']['Tables']['$1']['Row']>('$1').select('$2')"
+      }
+    },
+    {
+      "name": "Supabase Error Handling",
+      "pattern": "const\\s+{\\s*data\\s*}\\s*=\\s*await\\s+supabase",
+      "not_pattern": "const\\s+{\\s*data\\s*,\\s*error\\s*}\\s*=\\s*await\\s+supabase",
+      "message": "Always handle potential errors in Supabase queries.",
+      "severity": "error",
+      "fix": {
+        "find": "const { data } = await supabase",
+        "replace": "const { data, error } = await supabase"
+      }
+    },
+    {
+      "name": "Supabase RLS Policy Check",
+      "pattern": "supabase\\.from\\(['\"]([^'\"]+)['\"]\\)\\.(insert|update|delete)",
+      "message": "Ensure Row Level Security (RLS) policies are in place for this table operation.",
+      "severity": "info"
+    },
+    {
+      "name": "Supabase Auth Session Check",
+      "pattern": "supabase\\.auth\\.getSession\\(\\)",
+      "message": "Consider handling session state with React hooks or context for better performance.",
+      "severity": "info"
+    },
+    {
+      "name": "Supabase Realtime Subscription",
+      "pattern": "supabase\\.channel\\(['\"]([^'\"]+)['\"]\\)",
+      "message": "Remember to unsubscribe from channels in useEffect cleanup function.",
+      "severity": "warning"
+    },
+    {
+      "name": "Supabase Storage URL Construction",
+      "pattern": "supabase\\.storage\\.from\\(['\"]([^'\"]+)['\"]\\)\\.getPublicUrl\\(['\"]([^'\"]+)['\"]\\)",
+      "message": "Consider creating a utility function for consistent storage URL generation.",
+      "severity": "info"
+    }
+  ]
+}
